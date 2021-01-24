@@ -14,6 +14,13 @@ import java.util.List;
 public class Controller {
     private final Repository repository;
 
+    @GetMapping("/")
+    public ResponseEntity<String> hello() {
+        return ResponseEntity
+                .ok()
+                .body("Hello world!");
+    }
+
     @GetMapping("/find")
     public ResponseEntity<List<Person>> find() {
         return ResponseEntity
