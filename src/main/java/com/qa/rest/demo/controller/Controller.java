@@ -71,4 +71,21 @@ public class Controller {
                 .ok()
                 .body("Person was successfully deleted");
     }
+
+    @GetMapping("/plus")
+    public Integer plus(@RequestParam(value = "x") Integer x, @RequestParam(value = "y") Integer y) {
+        return x + y;
+    }
+
+    @GetMapping("/divide")
+    public Integer divide(@RequestParam(value = "x") Integer x, @RequestParam(value = "y") Integer y) {
+        return x / y;
+    }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<String> handleException(Exception e) {
+        return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
+                .body(e.getMessage());
+    }
 }
